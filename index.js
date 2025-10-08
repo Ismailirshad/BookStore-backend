@@ -18,13 +18,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/books', bookRouter);
-
 mongoose.connect(MONGODB_URI)
-    .then(() => {
-        console.log("Connected to databse")
-        app.listen(PORT, () => {
-            console.log("Server is running on port", { PORT })
-        })
-    }).catch((error) => {
-        console.log("Error connecting to database", error)
-    })
+    .then(() => console.log(" Connected to database"))
+    .catch((error) => console.log(" Error connecting to database", error));
+
+    export default app  ;
