@@ -1,9 +1,10 @@
 import express from 'express';
-import { PORT, MONGODB_URL } from './config.js'
+import dotenv from 'dotenv';
 import mongoose from 'mongoose'
 import bookRouter from './routes/bookRouter.js'
 import cors from 'cors';
 
+dotenv.config();
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.get('/', (req, res) => {
 
 app.use('/books', bookRouter);
 
-mongoose.connect(MONGODB_URL)
+mongoose.connect(MONGODB_URI)
     .then(() => {
         console.log("Connected to databse")
         app.listen(PORT, () => {
