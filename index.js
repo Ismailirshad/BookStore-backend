@@ -14,11 +14,11 @@ app.use(cors());
 
 app.get('/', (req, res) => {
     console.log(req)
-    return res.status(234).send("Welcome to mern stack")
+    return res.status(200).send("Welcome to mern stack")
 })
 
 app.use('/books', bookRouter);
-mongoose.connect(MONGODB_URI)
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log(" Connected to database"))
     .catch((error) => console.log(" Error connecting to database", error));
 
