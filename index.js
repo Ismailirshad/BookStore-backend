@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose'
 import bookRouter from './routes/bookRouter.js'
 import cors from 'cors';
+import { connectDB } from './db.js';
 
 dotenv.config();
 
@@ -18,8 +19,6 @@ app.get('/', (req, res) => {
 })
 
 app.use('/books', bookRouter);
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log(" Connected to database"))
-    .catch((error) => console.log(" Error connecting to database", error));
+connectDB()
 
     export default app  ;
